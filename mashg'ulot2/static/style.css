@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Rajdhani:wght@400;600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Rajdhani', sans-serif;
+  background: radial-gradient(circle at top, #0a0a0a, #000);
+  color: #eee;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: rgba(10, 10, 30, 0.9);
+  border-bottom: 2px solid #00ffff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  color: #00ffff;
+}
+
+nav a {
+  color: #ccc;
+  text-decoration: none;
+  margin-left: 20px;
+  transition: 0.3s;
+}
+nav a:hover, nav a.active {
+  color: #00ffff;
+  text-shadow: 0 0 8px #00ffff;
+}
+
+.hero {
+  text-align: center;
+  padding: 150px 20px;
+  background: linear-gradient(180deg, rgba(0,255,255,0.1), transparent);
+}
+.hero h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem;
+  color: #00ffff;
+}
+.hero p { font-size: 1.2rem; color: #ccc; }
+.btn {
+  margin-top: 20px;
+  padding: 10px 30px;
+  border: 2px solid #00ffff;
+  background: transparent;
+  color: #00ffff;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+.btn:hover {
+  background: #00ffff;
+  color: #000;
+  cursor: pointer;
+  box-shadow: 0 0 20px #00ffff;
+}
+
+.content {
+  padding: 80px 40px;
+  text-align: center;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+.card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid #00ffff;
+  border-radius: 12px;
+  padding: 30px 20px;
+  transition: 0.3s;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px #00ffff;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #00ffff;
+  background: rgba(10, 10, 30, 0.9);
+  color: #888;
+  font-size: 0.9rem;
+}

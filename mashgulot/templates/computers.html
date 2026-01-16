@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Computers | SAMANDAR GAME CLUB</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cyan: #0ff;
+      --magenta: #ff00ff;
+      --cyan-light: #00ffff55;
+      --magenta-light: #ff00ff55;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Orbitron", sans-serif;
+      background: radial-gradient(circle at center, #060010, #010005 90%);
+      color: #fff;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* ======= NAVBAR ======= */
+    header nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background: rgba(10, 0, 30, 0.9);
+      border-bottom: 2px solid var(--cyan);
+      box-shadow: 0 0 20px var(--cyan);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    nav .logo {
+      font-size: 1.2em;
+      font-weight: 700;
+      color: var(--cyan);
+      text-shadow: 0 0 15px var(--cyan), 0 0 30px var(--magenta);
+      letter-spacing: 2px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1em;
+      transition: 0.3s;
+    }
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: var(--cyan);
+      text-shadow: 0 0 10px var(--cyan), 0 0 20px var(--magenta);
+    }
+
+    /* Hamburger Menu */
+    .nav-toggle {
+      display: none;
+      font-size: 1.5em;
+      color: var(--cyan);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .nav-menu {
+      display: flex;
+    }
+    .nav-menu.active {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      background: rgba(10, 0, 30, 0.95);
+      padding: 10px;
+      box-shadow: 0 0 20px var(--cyan);
+    }
+
+    /* ======== PAGE TITLE ======== */
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+      font-size: 1.8em;
+      color: var(--cyan);
+      text-shadow: 0 0 15px var(--cyan), 0 0 30px var(--magenta);
+      letter-spacing: 2px;
+      animation: glowText 3s infinite alternate;
+    }
+    @keyframes glowText {
+      from { text-shadow: 0 0 10px var(--cyan), 0 0 20px var(--magenta); }
+      to { text-shadow: 0 0 25px var(--magenta), 0 0 50px var(--cyan); }
+    }
+
+    /* ======== BUILDING STYLE ======== */
+    .building {
+      display: grid;
+      grid-template-columns: 65% 5% 30%;
+      width: 90vw;
+      height: 80vh;
+      margin: 0 auto;
+      border: 2px solid var(--cyan);
+      border-radius: 15px;
+      box-shadow: 0 0 25px var(--cyan), inset 0 0 20px var(--cyan-light);
+      background: linear-gradient(145deg, #090018, #05000d);
+      animation: glow 4s infinite alternate;
+    }
+    @keyframes glow {
+      0% { box-shadow: 0 0 20px var(--cyan), inset 0 0 10px var(--magenta-light); }
+      100% { box-shadow: 0 0 40px var(--magenta), inset 0 0 20px var(--cyan-light); }
+    }
+
+    .left-block {
+      display: grid;
+      grid-template-rows: repeat(4, 1fr);
+      background: linear-gradient(180deg, #13003a, #09001d);
+      padding: 6px;
+      gap: 6px;
+    }
+    .corridor {
+      background: linear-gradient(180deg, #000, #140022);
+      border-left: 1px solid var(--cyan-light);
+      border-right: 1px solid var(--cyan-light);
+      box-shadow: inset 0 0 20px var(--cyan-light);
+    }
+    .right-block {
+      display: grid;
+      grid-template-rows: 1.5fr repeat(4, 1fr) repeat(2, 1.2fr);
+      background: linear-gradient(180deg, #1a002e, #280043);
+      padding: 6px;
+      gap: 6px;
+    }
+
+    .room {
+      border: 1px solid var(--cyan);
+      border-radius: 10px;
+      box-shadow: 0 0 10px var(--cyan);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.4s ease;
+      background: #080022;
+      cursor: pointer;
+    }
+    .room:hover,
+    .room:active {
+      transform: scale(1.02);
+      box-shadow: 0 0 30px var(--magenta-light), inset 0 0 20px var(--cyan-light);
+    }
+    .label {
+      position: absolute;
+      top: 8px;
+      left: 10px;
+      font-size: 0.8em;
+      color: var(--cyan);
+      text-shadow: 0 0 6px var(--cyan), 0 0 12px var(--magenta);
+    }
+
+    .computers {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-gap: 8px;
+      position: absolute;
+      bottom: 10%;
+      left: 5%;
+      right: 5%;
+      justify-items: center;
+    }
+
+    .computer-icon {
+      width: 35px;
+      height: 25px;
+      background-image: url('data:image/jpeg;base64,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');
+      background-size: cover;
+      background-position: center;
+      filter: drop-shadow(0 0 8px var(--cyan));
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .computer-icon:hover,
+    .computer-icon:active {
+      transform: scale(1.2);
+      filter: drop-shadow(0 0 12px var(--magenta));
+    }
+
+    .room[data-type="bar"] { background: linear-gradient(145deg, #1a0045, #2d0072); }
+    .room[data-type="vip"] { background: linear-gradient(145deg, #320055, #45007a); }
+    .room[data-type="ps5"] { background: linear-gradient(145deg, #002850, #004080); }
+    .room[data-type="ps5"]::after {
+      content: "🎮";
+      position: absolute;
+      font-size: 1.4em;
+      bottom: 8px;
+      right: 8px;
+      text-shadow: 0 0 8px var(--cyan), 0 0 18px var(--magenta);
+      animation: pulseIcon 2s infinite alternate;
+    }
+    @keyframes pulseIcon {
+      0% { opacity: 0.7; transform: scale(1); }
+      100% { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* ======== MODAL ======== */
+    .modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.9);
+      background: rgba(10, 0, 25, 0.95);
+      border: 1px solid var(--cyan);
+      border-radius: 10px;
+      padding: 15px 20px;
+      width: 90%;
+      max-width: 320px;
+      color: #fff;
+      box-shadow: 0 0 20px var(--cyan), 0 0 40px var(--magenta);
+      text-align: center;
+      display: none;
+      z-index: 100;
+      animation: modalFade 0.3s ease;
+    }
+    @keyframes modalFade {
+      from { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+      to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
+    .modal.hide {
+      animation: modalFadeOut 0.3s ease forwards;
+    }
+    @keyframes modalFadeOut {
+      from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+      to { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+    }
+    .modal h2 {
+      color: var(--cyan);
+      text-shadow: 0 0 10px var(--cyan), 0 0 20px var(--magenta);
+      font-size: 1.2em;
+    }
+    .close-btn {
+      margin-top: 10px;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 5px;
+      background: var(--magenta);
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 10px var(--magenta);
+      transition: 0.3s;
+    }
+    .close-btn:hover,
+    .close-btn:active {
+      background: var(--cyan);
+      color: #000;
+      box-shadow: 0 0 15px var(--cyan);
+    }
+
+    /* ======== RESPONSIVE DESIGN ======== */
+    @media (max-width: 768px) {
+      .building {
+        grid-template-columns: 1fr;
+        height: auto;
+        padding: 10px;
+      }
+      .corridor {
+        display: none;
+      }
+      .left-block,
+      .right-block {
+        grid-template-rows: auto;
+        gap: 10px;
+      }
+      .room {
+        min-height: 100px;
+        margin-bottom: 10px;
+      }
+      .computers {
+        grid-template-columns: repeat(3, 1fr); /* Kamroq ikonka ko‘rsatish */
+        grid-gap: 5px;
+        bottom: 5%;
+      }
+      .computer-icon {
+        width: 30px;
+        height: 20px;
+      }
+      .label {
+        font-size: 0.7em;
+      }
+      h1 {
+        font-size: 1.5em;
+        margin: 15px 0;
+      }
+      .modal {
+        width: 95%;
+        max-width: 300px;
+        padding: 10px;
+      }
+      .modal h2 {
+        font-size: 1em;
+      }
+      .close-btn {
+        padding: 5px 10px;
+        font-size: 0.9em;
+      }
+      /* Hamburger Menu */
+      .nav-toggle {
+        display: block;
+      }
+      .nav-menu {
+        display: none;
+      }
+      .nav-menu.active {
+        display: flex;
+      }
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+      nav ul li a {
+        font-size: 0.9em;
+        padding: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .building {
+        width: 95vw;
+      }
+      .room {
+        min-height: 80px;
+      }
+      .computers {
+        grid-template-columns: repeat(2, 1fr); /* Juda kichik ekranlarda 2 ta ikonka */
+      }
+      .computer-icon {
+        width: 25px;
+        height: 18px;
+      }
+      .label {
+        font-size: 0.6em;
+      }
+      .room[data-type="ps5"]::after {
+        font-size: 1.2em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ===== HEADER ===== -->
+  <header>
+    <nav>
+      <div class="logo">SAMANDAR GAME CLUB</div>
+      <button class="nav-toggle" aria-label="Menyuni ochish/yopish">☰</button>
+      <ul class="nav-menu">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'comp' %}" class="active">Computers</a></li>
+        <li><a href="{% url 'games' %}">Games</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main>
+    <h1>Kompyuter xonalar maketi</h1>
+
+    <div class="building">
+      <div class="left-block">
+        <div class="room" data-info="Ovqatlanish joyi - eng mazali taomlar"><span class="label">🍔 Ovqatlanish joyi</span></div>
+        <div class="room" data-info="Kompyuter xona A - umumiy o‘yin xonasi">
+          <span class="label">Kompyuter xona A</span>
+          <div class="computers">
+            <div class="computer-icon" data-name="Kompyuter A1"></div>
+            <div class="computer-icon" data-name="Kompyuter A2"></div>
+            <div class="computer-icon" data-name="Kompyuter A3"></div>
+            <div class="computer-icon" data-name="Kompyuter A4"></div>
+            <div class="computer-icon" data-name="Kompyuter A5"></div>
+            <div class="computer-icon" data-name="Kompyuter A6"></div>
+            <div class="computer-icon" data-name="Kompyuter A7"></div>
+            <div class="computer-icon" data-name="Kompyuter A8"></div>
+            <div class="computer-icon" data-name="Kompyuter A9"></div>
+            <div class="computer-icon" data-name="Kompyuter A10"></div>
+          </div>
+        </div>
+        <div class="room" data-info="Kompyuter xona B - yangilangan kompyuterlar">
+          <span class="label">Kompyuter xona B</span>
+          <div class="computers">
+            <div class="computer-icon" data-name="Kompyuter B1"></div>
+            <div class="computer-icon" data-name="Kompyuter B2"></div>
+            <div class="computer-icon" data-name="Kompyuter B3"></div>
+            <div class="computer-icon" data-name="Kompyuter B4"></div>
+            <div class="computer-icon" data-name="Kompyuter B5"></div>
+            <div class="computer-icon" data-name="Kompyuter B6"></div>
+            <div class="computer-icon" data-name="Kompyuter B7"></div>
+            <div class="computer-icon" data-name="Kompyuter B8"></div>
+            <div class="computer-icon" data-name="Kompyuter B9"></div>
+            <div class="computer-icon" data-name="Kompyuter B10"></div>
+          </div>
+        </div>
+        <div class="room" data-info="Dasturchilar xonasi - dasturiy ta'minot ishlab chiqaruvchilar uchun">
+          <span class="label">💻 Dasturchilar xonasi</span>
+          <div class="computers">
+            <div class="computer-icon" data-name="Dev PC 1"></div>
+            <div class="computer-icon" data-name="Dev PC 2"></div>
+            <div class="computer-icon" data-name="Dev PC 3"></div>
+            <div class="computer-icon" data-name="Dev PC 4"></div>
+            <div class="computer-icon" data-name="Dev PC 5"></div>
+            <div class="computer-icon" data-name="Dev PC 6"></div>
+            <div class="computer-icon" data-name="Dev PC 7"></div>
+            <div class="computer-icon" data-name="Dev PC 8"></div>
+            <div class="computer-icon" data-name="Dev PC 9"></div>
+            <div class="computer-icon" data-name="Dev PC 10"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="corridor"></div>
+
+      <div class="right-block">
+        <div class="room" data-type="bar" data-info="Bar / Admin joyi - ichimliklar va qabulxona"><span class="label">☕ Bar / Admin joyi</span></div>
+        <div class="room" data-type="vip" data-info="VIP xona 1 - maxsus o‘yinchilar uchun"><span class="label">VIP 1</span></div>
+        <div class="room" data-type="vip" data-info="VIP xona 2 - 4K o‘yin monitorlari"><span class="label">VIP 2</span></div>
+        <div class="room" data-type="vip" data-info="VIP xona 3 - shaxsiy joylar"><span class="label">VIP 3</span></div>
+        <div class="room" data-type="vip" data-info="VIP xona 4 - jamoaviy turnirlar uchun"><span class="label">VIP 4</span></div>
+        <div class="room" data-type="ps5" data-info="PS5 xona 1 - yangi o‘yinlar bilan"><span class="label">PS5 1</span></div>
+        <div class="room" data-type="ps5" data-info="PS5 xona 2 - multiplayer o‘yinlar"><span class="label">PS5 2</span></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- MODAL -->
+  <div class="modal" id="infoModal" role="dialog" aria-modal="true">
+    <h2 id="modalTitle"></h2>
+    <p id="modalBody"></p>
+    <button class="close-btn" aria-label="Modalni yopish">Yopish</button>
+  </div>
+
+  <script>
+       // Hamburger Menu Toggle
+    document.querySelector('.nav-toggle').addEventListener('click', () => {
+      document.querySelector('.nav-menu').classList.toggle('active');
+    });
+
+    // Qolgan JavaScript avvalgi tuzatilgan kod bilan bir xil:
+    const modal = document.getElementById('infoModal');
+    const title = document.getElementById('modalTitle');
+    const body = document.getElementById('modalBody');
+
+    function openModal(titleText, bodyText) {
+      title.innerText = titleText;
+      body.innerHTML = bodyText;
+      modal.style.display = "block";
+      document.querySelector('.close-btn').focus();
+    }
+
+    function closeModal() {
+      modal.classList.add('hide');
+      setTimeout(() => {
+        modal.style.display = "none";
+        modal.classList.remove('hide');
+        document.querySelector('.room:hover, .computer-icon:hover')?.focus();
+      }, 300);
+    }
+
+    document.querySelector('.building').addEventListener('click', e => {
+      const target = e.target.closest('.computer-icon, .room');
+      if (!target) return;
+      e.stopPropagation();
+
+      if (target.classList.contains('computer-icon')) {
+        const name = target.dataset.name;
+        const isBusy = Math.random() < 0.4;
+        const minutes = Math.floor(Math.random() * 120);
+        const price = 12000;
+        const timeNow = new Date().toLocaleTimeString();
+        openModal(name, `
+          <b>Status:</b> ${isBusy ? "🔴 Band" : "🟢 Bo'sh"}<br>
+          <b>Aktiv vaqt:</b> ${minutes} daqiqa<br>
+          <b>Soatiga:</b> ${price.toLocaleString()} so'm<br>
+          <b>Joriy vaqt:</b> ${timeNow}
+        `);
+      } else if (target.dataset.info) {
+        const label = target.querySelector('.label').innerText;
+        openModal(label, target.dataset.info);
+      }
+    });
+
+    document.querySelector('.close-btn').addEventListener('click', closeModal);
+  </script>
+</body>
+</html>

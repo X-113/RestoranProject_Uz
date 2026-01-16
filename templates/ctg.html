@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kategoriya Qo'shish</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="{% url 'food' %}" class="nav-button">Ovqat Qo'shish</a></li>
+            <li><a href="{% url 'ctg' %}" class="nav-button">Kategoriya Qo'shish</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Kategoriya Qo'shish</h1>
+        <h3 style="color: green;">{{ success }}</h3>
+        <h3 style="color: red;">{{ error }}</h3>
+        <form class="category-form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Kategoriya Nomi</label>
+                <input type="text" id="name" name="name" placeholder="Masalan: Ichimliklar" required>
+            </div>
+            <div class="form-group">
+                <label for="type">Kategoriya Turi</label>
+                <select id="type" name="type" required>
+                    <option value="" disabled selected>Tanlang</option>
+                    <option value="milliy">Milliy Taomlar</option>
+                    <option value="ichimlik">Salqin ichimliklar</option>
+                    <option value="kofe">Coffee</option>
+                    <option value="salat">Salatlar</option>
+                    <option value="desert">Shirinliklar</option>
+                    <option value="fast">Fast Food</option>
+                    <option value="other">Boshqa</option>
+                </select>
+            </div>
+            <button class="submit-button" type="submit">Qo'shish</button>
+        </form>
+    </div>
+</body>
+</html>

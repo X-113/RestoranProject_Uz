@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restoran Menyusi</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="{% url 'food' %}" class="nav-button">Ovqat Qo'shish</a></li>
+            <li><a href="{% url 'ctg' %}" class="nav-button">Kategoriya Qo'shish</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Restoran Menyusi</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nomi</th>
+                    <th>Tarkibi</th>
+                    <th>Narxi</th>
+                    <th>Rasmi</th>
+                    <th>Kaloriya</th>
+                    <th>Kategoriya</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in ovqatlar %}
+                <tr>
+                    <td>{{ i.nomi }}</td>
+                    <td>{{ i.tarkibi }}</td>
+                    <td>{{ i.narxi }}</td>
+                    <td><img src="{{ i.image.url }}" alt=""></td>
+                    <td>{{ i.kaloriya }}Kkal</td>
+                    <td>{{ i.ctg.name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

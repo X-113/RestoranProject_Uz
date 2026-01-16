@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  {% load static %}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game Club | Games</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}" />
+  <script defer src="{% static 'script.js' %}"></script>
+</head>
+<body>
+  <header>
+    <div class="logo">🎮 Game Club</div>
+    <nav>
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'comp' %}">Computers</a>
+      <a href="{% url 'games' %}" class="active">Games</a>
+    </nav>
+  </header>
+
+  <section class="content">
+    <h2>Available Games</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://www.charlieintel.com/cdn-image/wp-content/uploads/2023/09/29/counter-strike-2-csgo-vs-cs2-differences-comparison-changes.jpg?width=1200&quality=60&format=auto" alt="CS2" />
+        <h3>Counter-Strike 2</h3>
+        <div class="stars" data-rating="4"></div>
+        <button class="info-btn" data-game="Counter-Strike 2" data-img="https://cdn.cloudflare.steamstatic.com/steam/apps/730/header.jpg" data-desc="Eng mashhur FPS o‘yini. Strategiya, tezkorlik va jamoaviy o‘yin bu yerda.">Ko‘proq ma’lumot</button>
+      </div>
+      <div class="card">
+        <img src="https://business-portal-bucket.s3.amazonaws.com/media/images/41e172c318357d632f53b92d8cb38661_large_cover.original.jpg" alt="Dota 2" />
+        <h3>Dota 2</h3>
+        <div class="stars" data-rating="3"></div>
+        <button class="info-btn" data-game="Dota 2" data-img="https://cdn.cloudflare.steamstatic.com/steam/apps/570/header.jpg" data-desc="MOBA janridagi klassik jang — qahramonlarni tanlang va g‘alaba qozoning!">Ko‘proq ma’lumot</button>
+      </div>
+      <div class="card">
+        <img src="https://assets.isthereanydeal.com/019548b5-653e-7101-ae11-8f0bfbd15ee6/banner600.jpg?t=1753976416" alt="GTA V" />
+        <h3>GTA V</h3>
+        <div class="stars" data-rating="5"></div>
+        <button class="info-btn" data-game="GTA V" data-img="https://assets.isthereanydeal.com/019548b5-653e-7101-ae11-8f0bfbd15ee6/banner600.jpg" data-desc="Ochiq dunyo, sarguzasht va cheksiz imkoniyatlar o‘yini.">Ko‘proq ma’lumot</button>
+      </div>
+      <div class="card">
+        <img src="https://www.riotgames.com/darkroom/1440/8d5c497da1c2eeec8cffa99b01abc64b:5329ca773963a5b739e98e715957ab39/ps-f2p-val-console-launch-16x9.jpg" alt="Valorant" />
+        <h3>Valorant</h3>
+        <div class="stars" data-rating="3"></div>
+        <button class="info-btn" data-game="Valorant" data-img="https://www.riotgames.com/darkroom/1440/8d5c497da1c2eeec8cffa99b01abc64b:5329ca773963a5b739e98e715957ab39/ps-f2p-val-console-launch-16x9.jpg" data-desc="Taktik FPS o‘yini, agentlar va maxsus qobiliyatlar bilan jamoaviy janglar.">Ko‘proq ma’lumot</button>
+      </div>
+      <div class="card">
+        <img src="https://static0.xdaimages.com/wordpress/wp-content/uploads/2018/06/pubg.jpg?w=1200&h=675&fit=crop" alt="PUBG Mobile" />
+        <h3>PUBG MOBILE</h3>
+        <div class="stars" data-rating="5"></div>
+        <button class="info-btn" data-game="PUBG MOBILE" data-img="https://static0.xdaimages.com/wordpress/wp-content/uploads/2018/06/pubg.jpg" data-desc="Battle Royale janridagi omon qolish o‘yini, 100 o‘yinchi bilan jang qiling.">Ko‘proq ma’lumot</button>
+      </div>
+      <div class="card">
+        <img src="https://play-lh.googleusercontent.com/GBaWlaevq4CA0xN13QYlIseEmL2inzVEx9z3HBBJPNbIQmlZLgA9lj-pfbY4h3XVa5Xvuns3ORaWSEvk8IbSDyQ" alt="CALL OF DUTY Mobile" />
+        <h3>CALL OF DUTY MOBILE</h3>
+        <div class="stars" data-rating="4"></div>
+        <button class="info-btn" data-game="CALL OF DUTY MOBILE" data-img="https://4kwallpapers.com/images/wallpapers/call-of-duty-mobile-android-games-ios-games-2560x1080-778.jpg" data-desc="Mobil FPS o‘yini, jangovar missiyalar va multiplayer rejimlar bilan.">Ko‘proq ma’lumot</button>
+      </div>
+    </div>
+  </section>
+  <footer>© 2025 Game Club — All Rights Reserved</footer>
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <img id="modalImage" src="" alt="Game Image" />
+      <p id="modalDescription"></p>
+      <p id="modalText"></p>
+    </div>
+  </div>
+</body>
+</html>

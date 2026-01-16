@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Rajdhani:wght@400;600&display=swap');
+body {
+  margin: 0;
+  font-family: 'Rajdhani', sans-serif;
+  background: radial-gradient(circle at top, #0a0a0a, #000);
+  color: #eee;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: rgba(10, 10, 30, 0.9);
+  border-bottom: 2px solid #00ffff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+.logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.6rem;
+  color: #00ffff;
+  letter-spacing: 1px;
+}
+
+nav a {
+  color: #ccc;
+  text-decoration: none;
+  margin-left: 20px;
+  transition: 0.3s;
+}
+nav a:hover, nav a.active {
+  color: #00ffff;
+  text-shadow: 0 0 8px #00ffff;
+}
+
+.hero {
+  text-align: center;
+  padding: 150px 20px;
+  background: linear-gradient(180deg, rgba(0,255,255,0.1), transparent);
+}
+.hero h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem;
+  color: #00ffff;
+}
+.hero p { font-size: 1.2rem; color: #ccc; }
+.btn {
+  margin-top: 20px;
+  padding: 10px 30px;
+  border: 2px solid #00ffff;
+  background: transparent;
+  color: #00ffff;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+.btn:hover {
+  background: #00ffff;
+  color: #000;
+  cursor: pointer;
+  box-shadow: 0 0 20px #00ffff;
+}
+
+.content {
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.content h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.2rem;
+  color: #00ffff;
+  text-shadow: 0 0 10px #00ffff;
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+.card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid #00ffff;
+  border-radius: 12px;
+  padding: 30px 20px;
+  transition: 0.3s;
+  overflow: hidden;
+  backdrop-filter: blur(6px);
+}
+.card img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 10px;
+  border-bottom: 1px solid rgba(0,255,255,0.3);
+}
+.card h3 {
+  margin: 15px 0 10px;
+  color: #00ffff;
+  text-shadow: 0 0 8px #00ffff;
+}
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 0 25px #00ffff;
+}
+
+.stars {
+  color: gold;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.info-btn {
+  background: linear-gradient(90deg, #00ffff, #007bff);
+  border: none;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.info-btn:hover {
+  box-shadow: 0 0 15px #00ffff;
+  transform: scale(1.05);
+}
+
+/* Modal oynasi */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background: linear-gradient(145deg, #111, #1a1a1a);
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 500px;
+  color: #eee;
+  border: 2px solid #00ffff;
+  text-align: center;
+  box-shadow: 0 0 30px #00ffff;
+  animation: popIn 0.3s ease;
+}
+
+.modal-content img {
+  color: #00ffff;
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.close {
+  background: transparent;
+  color: #00ffff;
+  float: right;
+  font-size: 1.8rem;
+  border: 1px solid #00ffff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.close:hover {
+  background: #00ffff;
+  color: #000;
+  box-shadow: 0 0 15px #00ffff;
+}
+footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #00ffff;
+  background: rgba(10, 10, 30, 0.9);
+  color: #888;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 80px 20px;
+  }
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .modal-content {
+    width: 90%;
+    margin: 20% auto;
+  }
+}

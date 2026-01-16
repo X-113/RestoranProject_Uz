@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body style="background-color: {{ background }};">
+<!--    <h2>{{ title }}</h2>-->
+<!--    <h2>Mening ismim: {{ ism }}</h2>-->
+<!--    <h2>Familiyam: {{ familiya }}</h2>-->
+        <h1>{{tel}}</h1>
+        <ul>
+            {% for i in telefon %}
+            <li style="color: {{ i.color }} ;">{{ i.name }}</li>
+            {% endfor %}
+
+        </ul>
+
+
+
+
+</body>
+</html>
